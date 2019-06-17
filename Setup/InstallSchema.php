@@ -32,14 +32,6 @@ class InstallSchema implements InstallSchemaInterface
         );
 
         $table_xigen_customeraccountmanager_accountmanager->addColumn(
-            'status',
-            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
-            null,
-            ['default' => '0'],
-            'Status'
-        );
-
-        $table_xigen_customeraccountmanager_accountmanager->addColumn(
             'name',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
             255,
@@ -69,6 +61,14 @@ class InstallSchema implements InstallSchemaInterface
             null,
             [],
             'Updated At'
+        );
+
+        $table_xigen_customeraccountmanager_accountmanager->addColumn(
+            'status',
+            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            null,
+            [],
+            'Status'
         );
 
         $setup->getConnection()->createTable($table_xigen_customeraccountmanager_accountmanager);

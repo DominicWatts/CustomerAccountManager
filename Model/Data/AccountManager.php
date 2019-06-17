@@ -125,4 +125,23 @@ class AccountManager extends \Magento\Framework\Api\AbstractExtensibleObject imp
     {
         return $this->setData(self::UPDATED_AT, $updatedAt);
     }
+
+    /**
+     * Get status
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->_get(self::STATUS);
+    }
+
+    /**
+     * Set status
+     * @param string $status
+     * @return \Xigen\CustomerAccountManager\Api\Data\AccountManagerInterface
+     */
+    public function setStatus($status)
+    {
+        return $this->setData(self::STATUS, $status);
+    }
 }

@@ -8,9 +8,10 @@ namespace Xigen\CustomerAccountManager\Api\Data;
  */
 interface AccountManagerInterface extends \Magento\Framework\Api\ExtensibleDataInterface
 {
+    const NAME = 'name';
+    const STATUS = 'status';
     const CREATED_AT = 'created_at';
     const ACCOUNTMANAGER_ID = 'accountmanager_id';
-    const NAME = 'name';
     const EMAIL = 'email';
     const UPDATED_AT = 'updated_at';
 
@@ -93,4 +94,17 @@ interface AccountManagerInterface extends \Magento\Framework\Api\ExtensibleDataI
      * @return \Xigen\CustomerAccountManager\Api\Data\AccountManagerInterface
      */
     public function setUpdatedAt($updatedAt);
+
+    /**
+     * Get status
+     * @return string|null
+     */
+    public function getStatus();
+
+    /**
+     * Set status
+     * @param string $status
+     * @return \Xigen\CustomerAccountManager\Api\Data\AccountManagerInterface
+     */
+    public function setStatus($status);
 }
