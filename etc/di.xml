@@ -1,19 +1,19 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-	<preference for="Xigen\CustomerAccountManager\Api\AccountManagerRepositoryInterface" type="Xigen\CustomerAccountManager\Model\AccountManagerRepository"/>
-	<preference for="Xigen\CustomerAccountManager\Api\Data\AccountManagerInterface" type="Xigen\CustomerAccountManager\Model\Data\AccountManager"/>
-	<preference for="Xigen\CustomerAccountManager\Api\Data\AccountManagerSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
-	<virtualType name="Xigen\CustomerAccountManager\Model\ResourceModel\AccountManager\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
-		<arguments>
-			<argument name="mainTable" xsi:type="string">xigen_customeraccountmanager_accountmanager</argument>
-			<argument name="resourceModel" xsi:type="string">Xigen\CustomerAccountManager\Model\ResourceModel\AccountManager\Collection</argument>
-		</arguments>
-	</virtualType>
-	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
-		<arguments>
-			<argument name="collections" xsi:type="array">
-				<item name="xigen_customeraccountmanager_accountmanager_listing_data_source" xsi:type="string">Xigen\CustomerAccountManager\Model\ResourceModel\AccountManager\Grid\Collection</item>
-			</argument>
-		</arguments>
-	</type>
+    <preference for="Xigen\CustomerAccountManager\Api\AccountManagerRepositoryInterface" type="Xigen\CustomerAccountManager\Model\AccountManagerRepository"/>
+    <preference for="Xigen\CustomerAccountManager\Api\Data\AccountManagerInterface" type="Xigen\CustomerAccountManager\Model\Data\AccountManager"/>
+    <preference for="Xigen\CustomerAccountManager\Api\Data\AccountManagerSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <virtualType name="Xigen\CustomerAccountManager\Model\ResourceModel\AccountManager\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">xigen_customeraccountmanager_accountmanager</argument>
+            <argument name="resourceModel" xsi:type="string">Xigen\CustomerAccountManager\Model\ResourceModel\AccountManager\Collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="xigen_customeraccountmanager_accountmanager_listing_data_source" xsi:type="string">Xigen\CustomerAccountManager\Model\ResourceModel\AccountManager\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
 </config>

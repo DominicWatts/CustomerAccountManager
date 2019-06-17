@@ -44,7 +44,7 @@ class InlineEdit extends \Magento\Backend\App\Action
             } else {
                 foreach (array_keys($postItems) as $modelId) {
                     /** @var \Xigen\CustomerAccountManager\Model\AccountManager $model */
-                    $model = $this->_accountManagerFactory->create()->load($modelId);
+                    $model = $this->accountManagerFactory->create()->load($modelId);
                     try {
                         $model->setData(array_merge($model->getData(), $postItems[$modelId]));
                         $model->save();

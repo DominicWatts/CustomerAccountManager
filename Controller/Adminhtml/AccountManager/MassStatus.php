@@ -14,7 +14,7 @@ class MassStatus extends \Magento\Backend\App\Action
      * MassStatus constructor
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Ui\Component\MassAction\Filter $filter
-     * @param \Xigen\CustomerAccountManager\Model\CustomerAccountManagerFactory $accountManagerFactory
+     * @param \Xigen\CustomerAccountManager\Model\AccountManagerFactory $accountManagerFactory
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,

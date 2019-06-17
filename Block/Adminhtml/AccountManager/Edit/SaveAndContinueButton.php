@@ -5,6 +5,9 @@ namespace Xigen\CustomerAccountManager\Block\Adminhtml\AccountManager\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
+/**
+ * SaveAndContinueButton button class
+ */
 class SaveAndContinueButton extends GenericButton implements ButtonProviderInterface
 {
 

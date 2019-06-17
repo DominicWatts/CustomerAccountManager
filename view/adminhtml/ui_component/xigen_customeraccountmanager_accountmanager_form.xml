@@ -41,20 +41,20 @@
             <label/>
         </settings>
         <field formElement="select" name="status" sortOrder="10">
-			<argument name="data" xsi:type="array">
-				<item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
-				<item name="config" xsi:type="array">
-					<item name="source" xsi:type="string">AccountManager</item>
-				</item>
-			</argument>
-			<settings>
-				<dataType>text</dataType>
-				<label translate="true">Approved</label>
-				<dataScope>status</dataScope>
-				<validation>
-					<rule name="required-entry" xsi:type="boolean">false</rule>
-				</validation>
-			</settings>
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">AccountManager</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Status</label>
+                <dataScope>status</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+            </settings>
         </field>
         <field formElement="input" name="name" sortOrder="20">
             <argument name="data" xsi:type="array">

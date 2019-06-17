@@ -8,6 +8,7 @@ namespace Xigen\CustomerAccountManager\Model\Customer\Attribute\Source;
  */
 class AccountManager extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource
 {
+    const ACCOUNT_MANAGER_ENABLED = 1;
 
     /**
      * @var \Xigen\CustomerAccountManager\Model\AccountManagerFactory
@@ -27,16 +28,20 @@ class AccountManager extends \Magento\Eav\Model\Entity\Attribute\Source\Abstract
     public function getAllOptions()
     {
         if ($this->_options === null) {
+            $this->_options = [
+                ['value' => '', 'label' => __('Please select')]
+            ];
             $collection = $this->accountManagerFactory->create()
                 ->getCollection()
-                ->addAttributeToFilter('status', ['eq' => 1]);
-            foreach ($collection as $item) {
-                $this->_options[] = [
-                    [
+                ->addFieldToFilter('status', ['eq' => self::ACCOUNT_MANAGER_ENABLED])
+                ->setOrder('name', 'ASC');
+            if ($collection && $collection->getSize() > 0) {
+                foreach ($collection as $item) {
+                    $this->_options[] = [
                         'value' => $item->getId(),
                         'label' => __('[%1] %2', $item->getId(), $item->getName())
-                    ]
-                ];
+                    ];
+                }
             }
         }
         return $this->_options;
