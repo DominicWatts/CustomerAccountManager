@@ -1,0 +1,26 @@
+{
+    "name": "xigen/module-customeraccountmanager",
+    "description": "",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Mage2Gen",
+            "email": "info@mage2gen.com"
+        },
+        {
+            "name": "Dominic Xigen",
+            "email": "xigen.dominic@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Xigen\\CustomerAccountManager\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

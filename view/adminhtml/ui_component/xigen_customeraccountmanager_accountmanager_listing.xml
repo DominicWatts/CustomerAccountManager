@@ -1,0 +1,128 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">xigen_customeraccountmanager_accountmanager_listing.xigen_customeraccountmanager_accountmanager_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>xigen_customeraccountmanager_accountmanager_columns</spinner>
+        <deps>
+            <dep>xigen_customeraccountmanager_accountmanager_listing.xigen_customeraccountmanager_accountmanager_listing_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add New Account Manager</label>
+            </button>
+        </buttons>
+    </settings>
+    <dataSource name="xigen_customeraccountmanager_accountmanager_listing_data_source">
+        <aclResource>Xigen_CustomerAccountManager::AccountManager</aclResource>
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">xigen_customeraccountmanager_accountmanager_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">accountmanager_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" path="mui/index/render" xsi:type="url"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">accountmanager_id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="xigen_customeraccountmanager_accountmanager_columns">
+        <settings>
+            <editorConfig>
+                <param name="selectProvider" xsi:type="string">xigen_customeraccountmanager_accountmanager_listing.xigen_customeraccountmanager_accountmanager_listing.xigen_customeraccountmanager_accountmanager_columns.ids</param>
+                <param name="enabled" xsi:type="boolean">true</param>
+                <param name="indexField" xsi:type="string">accountmanager_id</param>
+                <param name="clientConfig" xsi:type="array">
+                    <item name="saveUrl" path="xigen_customeraccountmanager/AccountManager/inlineEdit" xsi:type="url"/>
+                    <item name="validateBeforeSave" xsi:type="boolean">false</item>
+                </param>
+            </editorConfig>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">xigen_customeraccountmanager_accountmanager_listing.xigen_customeraccountmanager_accountmanager_listing.xigen_customeraccountmanager_accountmanager_columns_editor</item>
+                    <item name="target" xsi:type="string">startEdit</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                        <item name="1" xsi:type="boolean">true</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>accountmanager_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="accountmanager_id">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="status" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Status</label>
+				<editor>
+					<editorType>select</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+            </settings>
+        </column>
+        <column name="name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Name</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="email">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Email</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <actionsColumn class="Xigen\CustomerAccountManager\Ui\Component\Listing\Column\AccountManagerActions" name="actions">
+            <settings>
+                <indexField>accountmanager_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>
