@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Xigen_CustomerAccountManager::CustomerAccountManager" title="Account Managers" module="Xigen_CustomerAccountManager" sortOrder="50" resource="Xigen_CustomerAccountManager::data" parent="Magento_Backend::content"/>
+        <add id="Xigen_CustomerAccountManager::CustomerAccountManager" title="Account Managers" module="Xigen_CustomerAccountManager" sortOrder="50" resource="Xigen_CustomerAccountManager::data" parent="Magento_Backend::marketing"/>
         <add action="xigen_customeraccountmanager/accountmanager/index" id="Xigen_CustomerAccountManager::xigen_customeraccountmanager_accountmanager" module="Xigen_CustomerAccountManager" parent="Xigen_CustomerAccountManager::CustomerAccountManager" resource="Magento_Backend::content" sortOrder="10" title="Manage"/>
     </menu>
 </config>
