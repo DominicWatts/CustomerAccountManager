@@ -3,6 +3,7 @@
     <preference for="Xigen\CustomerAccountManager\Api\AccountManagerRepositoryInterface" type="Xigen\CustomerAccountManager\Model\AccountManagerRepository"/>
     <preference for="Xigen\CustomerAccountManager\Api\Data\AccountManagerInterface" type="Xigen\CustomerAccountManager\Model\Data\AccountManager"/>
     <preference for="Xigen\CustomerAccountManager\Api\Data\AccountManagerSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Magento\Customer\Block\Account\Dashboard\Info" type="Xigen\CustomerAccountManager\Rewrite\Magento\Customer\Block\Account\Dashboard\Info"/>
     <virtualType name="Xigen\CustomerAccountManager\Model\ResourceModel\AccountManager\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">xigen_customeraccountmanager_accountmanager</argument>

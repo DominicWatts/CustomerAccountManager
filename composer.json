@@ -1,16 +1,13 @@
 {
-    "name": "xigen/module-customeraccountmanager",
+    "name": "xigen/customeraccountmanager",
     "description": "",
     "type": "magento2-module",
     "license": "proprietary",
+    "version": "1.0.0",
     "authors": [
         {
-            "name": "Mage2Gen",
-            "email": "info@mage2gen.com"
-        },
-        {
             "name": "Dominic Xigen",
-            "email": "xigen.dominic@gmail.com"
+            "email": "dominic@xigen.co.uk"
         }
     ],
     "minimum-stability": "dev",
