@@ -53,7 +53,7 @@ class MassStatus extends \Magento\Backend\App\Action
             if ($updatedItems != 0) {
                 if ($collectionSize != $updatedItems) {
                     $this->messageManager->addErrorMessage(
-                        __('Failed to update %1 custome manager(s).', $collectionSize - $updatedItems)
+                        __('Failed to update %1 customer manager(s).', $collectionSize - $updatedItems)
                     );
                 }
                 $this->messageManager->addSuccessMessage(
