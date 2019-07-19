@@ -9,6 +9,10 @@ namespace Xigen\CustomerAccountManager\Controller\Adminhtml;
 abstract class AccountManager extends \Magento\Backend\App\Action
 {
     const ADMIN_RESOURCE = 'Xigen_CustomerAccountManager::top_level';
+
+    /**
+     * @var \Magento\Framework\Registry
+     */
     protected $_coreRegistry;
 
     /**
@@ -25,7 +29,6 @@ abstract class AccountManager extends \Magento\Backend\App\Action
 
     /**
      * Init page
-     *
      * @param \Magento\Backend\Model\View\Result\Page $resultPage
      * @return \Magento\Backend\Model\View\Result\Page
      */

@@ -18,6 +18,16 @@ class Info extends \Magento\Customer\Block\Account\Dashboard\Info
      */
     protected $logger;
 
+    /**
+     * Info constructor.
+     * @param \Magento\Framework\View\Element\Template\Context $context
+     * @param \Magento\Customer\Helper\Session\CurrentCustomer $currentCustomer
+     * @param \Magento\Newsletter\Model\SubscriberFactory $subscriberFactory
+     * @param \Magento\Customer\Helper\View $helperView
+     * @param \Xigen\CustomerAccountManager\Api\AccountManagerRepositoryInterface $accountManagerRepositoryInterface
+     * @param \Psr\Log\LoggerInterface $logger
+     * @param array $data
+     */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Customer\Helper\Session\CurrentCustomer $currentCustomer,

@@ -11,13 +11,23 @@ use Xigen\CustomerAccountManager\Model\ResourceModel\AccountManager\CollectionFa
  */
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
+    /**
+     * @var array
+     */
     protected $loadedData;
+
+    /**
+     * @var DataPersistorInterface
+     */
     protected $dataPersistor;
+
+    /**
+     * @var \Xigen\CustomerAccountManager\Model\ResourceModel\AccountManager\Collection
+     */
     protected $collection;
 
     /**
      * Constructor
-     *
      * @param string $name
      * @param string $primaryFieldName
      * @param string $requestFieldName
@@ -42,7 +52,6 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 
     /**
      * Get data
-     *
      * @return array
      */
     public function getData()
@@ -55,14 +64,14 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
             $this->loadedData[$model->getId()] = $model->getData();
         }
         $data = $this->dataPersistor->get('xigen_customeraccountmanager_accountmanager');
-        
+
         if (!empty($data)) {
             $model = $this->collection->getNewEmptyItem();
             $model->setData($data);
             $this->loadedData[$model->getId()] = $model->getData();
             $this->dataPersistor->clear('xigen_customeraccountmanager_accountmanager');
         }
-        
+
         return $this->loadedData;
     }
 }

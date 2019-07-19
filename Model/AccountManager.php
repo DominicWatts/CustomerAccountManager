@@ -13,17 +13,31 @@ use Xigen\CustomerAccountManager\Api\Data\AccountManagerInterfaceFactory;
 class AccountManager extends \Magento\Framework\Model\AbstractModel
 {
     protected $_eventPrefix = 'xigen_customeraccountmanager_accountmanager';
+
+    /**
+     * @var DataObjectHelper
+     */
     protected $dataObjectHelper;
 
+    /**
+     * @var AccountManagerInterfaceFactory
+     */
     protected $accountmanagerDataFactory;
 
     /**
+     * @var \Magento\Framework\Stdlib\DateTime\DateTime
+     */
+    protected $dateTime;
+
+    /**
+     * AccountManager constructor.
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
      * @param AccountManagerInterfaceFactory $accountmanagerDataFactory
      * @param DataObjectHelper $dataObjectHelper
-     * @param \Xigen\CustomerAccountManager\Model\ResourceModel\AccountManager $resource
-     * @param \Xigen\CustomerAccountManager\Model\ResourceModel\AccountManager\Collection $resourceCollection
+     * @param ResourceModel\AccountManager $resource
+     * @param ResourceModel\AccountManager\Collection $resourceCollection
+     * @param \Magento\Framework\Stdlib\DateTime\DateTime $dateTime
      * @param array $data
      */
     public function __construct(
@@ -61,14 +75,14 @@ class AccountManager extends \Magento\Framework\Model\AbstractModel
     public function getDataModel()
     {
         $accountmanagerData = $this->getData();
-        
+
         $accountmanagerDataObject = $this->accountmanagerDataFactory->create();
         $this->dataObjectHelper->populateWithArray(
             $accountmanagerDataObject,
             $accountmanagerData,
             AccountManagerInterface::class
         );
-        
+
         return $accountmanagerDataObject;
     }
 }

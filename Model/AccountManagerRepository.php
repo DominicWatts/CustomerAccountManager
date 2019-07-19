@@ -23,26 +23,59 @@ use Magento\Framework\Reflection\DataObjectProcessor;
  */
 class AccountManagerRepository implements AccountManagerRepositoryInterface
 {
+    /**
+     * @var ResourceAccountManager
+     */
     protected $resource;
 
+    /**
+     * @var AccountManagerInterfaceFactory
+     */
     protected $dataAccountManagerFactory;
 
+    /**
+     * @var JoinProcessorInterface
+     */
     protected $extensionAttributesJoinProcessor;
 
+    /**
+     * @var AccountManagerCollectionFactory
+     */
     protected $accountManagerCollectionFactory;
 
+    /**
+     * @var ExtensibleDataObjectConverter
+     */
     protected $extensibleDataObjectConverter;
-    
+
+    /**
+     * @var AccountManagerFactory
+     */
     protected $accountManagerFactory;
 
+    /**
+     * @var DataObjectProcessor .
+     */
     protected $dataObjectProcessor;
 
+    /**
+     * @var StoreManagerInterface
+     */
     private $storeManager;
 
+    /**
+     * @var CollectionProcessorInterface
+     */
     private $collectionProcessor;
 
+    /**
+     * @var DataObjectHelper
+     */
     protected $dataObjectHelper;
 
+    /**
+     * @var AccountManagerSearchResultsInterfaceFactory
+     */
     protected $searchResultsFactory;
 
     /**
@@ -90,19 +123,14 @@ class AccountManagerRepository implements AccountManagerRepositoryInterface
     public function save(
         \Xigen\CustomerAccountManager\Api\Data\AccountManagerInterface $accountManager
     ) {
-        /* if (empty($accountManager->getStoreId())) {
-            $storeId = $this->storeManager->getStore()->getId();
-            $accountManager->setStoreId($storeId);
-        } */
-        
         $accountManagerData = $this->extensibleDataObjectConverter->toNestedArray(
             $accountManager,
             [],
             \Xigen\CustomerAccountManager\Api\Data\AccountManagerInterface::class
         );
-        
+
         $accountManagerModel = $this->accountManagerFactory->create()->setData($accountManagerData);
-        
+
         try {
             $this->resource->save($accountManagerModel);
         } catch (\Exception $exception) {
@@ -134,22 +162,22 @@ class AccountManagerRepository implements AccountManagerRepositoryInterface
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
         $collection = $this->accountManagerCollectionFactory->create();
-        
+
         $this->extensionAttributesJoinProcessor->process(
             $collection,
             \Xigen\CustomerAccountManager\Api\Data\AccountManagerInterface::class
         );
-        
+
         $this->collectionProcessor->process($criteria, $collection);
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
-        
+
         $items = [];
         foreach ($collection as $model) {
             $items[] = $model->getDataModel();
         }
-        
+
         $searchResults->setItems($items);
         $searchResults->setTotalCount($collection->getSize());
         return $searchResults;

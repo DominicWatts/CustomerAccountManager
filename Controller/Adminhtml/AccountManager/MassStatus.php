@@ -1,4 +1,5 @@
 <?php
+
 namespace Xigen\CustomerAccountManager\Controller\Adminhtml\AccountManager;
 
 /**
@@ -7,9 +8,16 @@ namespace Xigen\CustomerAccountManager\Controller\Adminhtml\AccountManager;
 class MassStatus extends \Magento\Backend\App\Action
 {
     const ADMIN_RESOURCE = 'Xigen_CustomerAccountManager::top_level';
+    /**
+     * @var \Magento\Ui\Component\MassAction\Filter
+     */
     private $filter;
-    private $collectionFactory;
+
+    /**
+     * @var \Xigen\CustomerAccountManager\Model\AccountManagerFactory
+     */
     private $accountManagerFactory;
+    
     /**
      * MassStatus constructor
      * @param \Magento\Backend\App\Action\Context $context
@@ -25,9 +33,9 @@ class MassStatus extends \Magento\Backend\App\Action
         $this->accountManagerFactory = $accountManagerFactory;
         parent::__construct($context);
     }
+
     /**
      * Execute action.
-     *
      * @return \Magento\Backend\Model\View\Result\Redirect
      * @throws \Magento\Framework\Exception\LocalizedException|\Exception
      */

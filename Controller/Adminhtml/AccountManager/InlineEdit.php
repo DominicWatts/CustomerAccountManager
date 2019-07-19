@@ -8,6 +8,14 @@ namespace Xigen\CustomerAccountManager\Controller\Adminhtml\AccountManager;
  */
 class InlineEdit extends \Magento\Backend\App\Action
 {
+    /**
+     * @var \Xigen\CustomerAccountManager\Model\AccountManagerFactory
+     */
+    protected $accountManagerFactory;
+    
+    /**
+     * @var \Magento\Framework\Controller\Result\JsonFactory
+     */
     protected $jsonFactory;
 
     /**
@@ -26,7 +34,6 @@ class InlineEdit extends \Magento\Backend\App\Action
 
     /**
      * Inline edit action
-     *
      * @return \Magento\Framework\Controller\ResultInterface
      */
     public function execute()
@@ -35,7 +42,7 @@ class InlineEdit extends \Magento\Backend\App\Action
         $resultJson = $this->jsonFactory->create();
         $error = false;
         $messages = [];
-        
+
         if ($this->getRequest()->getParam('isAjax')) {
             $postItems = $this->getRequest()->getParam('items', []);
             if (!count($postItems)) {
@@ -55,7 +62,7 @@ class InlineEdit extends \Magento\Backend\App\Action
                 }
             }
         }
-        
+
         return $resultJson->setData([
             'messages' => $messages,
             'error' => $error

@@ -8,14 +8,22 @@ namespace Xigen\CustomerAccountManager\Controller\Adminhtml\AccountManager;
 class MassDelete extends \Magento\Backend\App\Action
 {
     const ADMIN_RESOURCE = 'Xigen_CustomerAccountManager::top_level';
-    private $filter;
-    private $collectionFactory;
-    private $accountManagerFactory;
+
     /**
-     * assDelete constructor
+     * @var \Magento\Ui\Component\MassAction\Filter
+     */
+    private $filter;
+
+    /**
+     * @var \Xigen\CustomerAccountManager\Model\AccountManagerFactory
+     */
+    private $accountManagerFactory;
+
+    /**
+     * MassDelete constructor.
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Ui\Component\MassAction\Filter $filter
-     * @param \Xigen\CustomerAccountManager\Model\Xigen\AccountManagerFactory $accountManagerFactory
+     * @param \Xigen\CustomerAccountManager\Model\AccountManagerFactory $accountManagerFactory
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
@@ -26,9 +34,9 @@ class MassDelete extends \Magento\Backend\App\Action
         $this->accountManagerFactory = $accountManagerFactory;
         parent::__construct($context);
     }
+
     /**
      * Execute action.
-     *
      * @return \Magento\Backend\Model\View\Result\Redirect
      * @throws \Magento\Framework\Exception\LocalizedException|\Exception
      */

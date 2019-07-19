@@ -8,6 +8,17 @@ namespace Xigen\CustomerAccountManager\Controller\Adminhtml\AccountManager;
  */
 class Delete extends \Xigen\CustomerAccountManager\Controller\Adminhtml\AccountManager
 {
+    /**
+     * @var \Xigen\CustomerAccountManager\Model\AccountManagerFactory
+     */
+    protected $accountManagerFactory;
+
+    /**
+     * Delete constructor.
+     * @param \Magento\Backend\App\Action\Context $context
+     * @param \Magento\Framework\Registry $coreRegistry
+     * @param \Xigen\CustomerAccountManager\Model\AccountManagerFactory $accountManagerFactory
+     */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\Registry $coreRegistry,
@@ -19,7 +30,6 @@ class Delete extends \Xigen\CustomerAccountManager\Controller\Adminhtml\AccountM
 
     /**
      * Delete action
-     *
      * @return \Magento\Framework\Controller\ResultInterface
      */
     public function execute()

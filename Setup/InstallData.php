@@ -14,11 +14,13 @@ use Magento\Customer\Setup\CustomerSetupFactory;
  */
 class InstallData implements InstallDataInterface
 {
+    /**
+     * @var CustomerSetupFactory
+     */
     private $customerSetupFactory;
 
     /**
      * Constructor
-     *
      * @param \Magento\Customer\Setup\CustomerSetupFactory $customerSetupFactory
      */
     public function __construct(
@@ -36,29 +38,34 @@ class InstallData implements InstallDataInterface
     ) {
         $customerSetup = $this->customerSetupFactory->create(['setup' => $setup]);
 
-        $customerSetup->addAttribute(\Magento\Customer\Model\Customer::ENTITY, 'account_manager', [
-            'type' => 'int',
-            'label' => 'Account Manager',
-            'input' => 'select',
-            'source' => \Xigen\CustomerAccountManager\Model\Customer\Attribute\Source\AccountManager::class,
-            'required' => false,
-            'visible' => true,
-            'position' => 500,
-            'system' => false,
-            'backend' => ''
-        ]);
-        
-        $attribute = $customerSetup->getEavConfig()->getAttribute('customer', 'account_manager')
-        ->addData(
-            ['used_in_forms' =>
-                [
-                    'adminhtml_customer',
-                    'adminhtml_checkout',
-                    'customer_account_create',
-                    'customer_account_edit'
-                ]
+        $customerSetup->addAttribute(
+            \Magento\Customer\Model\Customer::ENTITY,
+            'account_manager',
+            [
+                'type' => 'int',
+                'label' => 'Account Manager',
+                'input' => 'select',
+                'source' => \Xigen\CustomerAccountManager\Model\Customer\Attribute\Source\AccountManager::class,
+                'required' => false,
+                'visible' => true,
+                'position' => 500,
+                'system' => false,
+                'backend' => ''
             ]
         );
+
+        $attribute = $customerSetup->getEavConfig()->getAttribute('customer', 'account_manager')
+            ->addData(
+                [
+                    'used_in_forms' =>
+                        [
+                            'adminhtml_customer',
+                            'adminhtml_checkout',
+                            'customer_account_create',
+                            'customer_account_edit'
+                        ]
+                ]
+            );
         $attribute->save();
     }
 }
