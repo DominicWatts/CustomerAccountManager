@@ -3,7 +3,9 @@
     <body>
         <referenceContainer name="content">
             <block class="Magento\Customer\Block\Account\Dashboard\Info" name="customer_account_dashboard_info" as="info" template="Magento_Customer::account/dashboard/info.phtml" cacheable="false">
-                <block class="Magento\Customer\Block\Account\Dashboard\Info" name="customer.account.dashboard.info.extra" template="Xigen_CustomerAccountManager::account/dashboard/info.phtml"/>
+                <container name="customer.account.dashboard.info.extra">
+                    <block class="Magento\Customer\Block\Account\Dashboard\Info" name="customer.account.dashboard.info.extra.account.manager" template="Xigen_CustomerAccountManager::account/dashboard/info.phtml"/>
+                </container>
             </block>
         </referenceContainer>
     </body>
