@@ -8,12 +8,22 @@ namespace Xigen\CustomerAccountManager\Controller\Adminhtml\AccountManager;
  */
 class Edit extends \Xigen\CustomerAccountManager\Controller\Adminhtml\AccountManager
 {
+    /**
+     * @var \Magento\Framework\View\Result\PageFactory
+     */
     protected $resultPageFactory;
 
     /**
+     * @var \Xigen\CustomerAccountManager\Model\AccountManagerFactory
+     */
+    protected $accountManagerFactory;
+
+    /**
+     * Edit constructor.
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\Registry $coreRegistry
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param \Xigen\CustomerAccountManager\Model\AccountManagerFactory $accountManagerFactory
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
@@ -28,7 +38,6 @@ class Edit extends \Xigen\CustomerAccountManager\Controller\Adminhtml\AccountMan
 
     /**
      * Edit action
-     *
      * @return \Magento\Framework\Controller\ResultInterface
      */
     public function execute()
@@ -36,7 +45,7 @@ class Edit extends \Xigen\CustomerAccountManager\Controller\Adminhtml\AccountMan
         // 1. Get ID and create model
         $id = $this->getRequest()->getParam('accountmanager_id');
         $model = $this->_objectManager->create(\Xigen\CustomerAccountManager\Model\AccountManager::class);
-        
+
         // 2. Initial checking
         if ($id) {
             $model->load($id);
@@ -48,7 +57,7 @@ class Edit extends \Xigen\CustomerAccountManager\Controller\Adminhtml\AccountMan
             }
         }
         $this->_coreRegistry->register('xigen_customeraccountmanager_accountmanager', $model);
-        
+
         // 3. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
@@ -57,7 +66,8 @@ class Edit extends \Xigen\CustomerAccountManager\Controller\Adminhtml\AccountMan
             $id ? __('Edit account manager') : __('New account manager')
         );
         $resultPage->getConfig()->getTitle()->prepend(__('account managers'));
-        $resultPage->getConfig()->getTitle()->prepend($model->getId() ? __('Edit Account Manager %1', $model->getId()) : __('New Account Manager'));
+        $resultPage->getConfig()->getTitle()->prepend($model->getId() ? __('Edit Account Manager %1',
+            $model->getId()) : __('New Account Manager'));
         return $resultPage;
     }
 }

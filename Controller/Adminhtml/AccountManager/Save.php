@@ -10,7 +10,15 @@ use Magento\Framework\Exception\LocalizedException;
  */
 class Save extends \Magento\Backend\App\Action
 {
+    /**
+     * @var \Magento\Framework\App\Request\DataPersistorInterface
+     */
     protected $dataPersistor;
+
+    /**
+     * @var \Xigen\CustomerAccountManager\Model\AccountManagerFactory
+     */
+    protected $accountManagerFactory;
 
     /**
      * @param \Magento\Backend\App\Action\Context $context
@@ -28,7 +36,6 @@ class Save extends \Magento\Backend\App\Action
 
     /**
      * Save action
-     *
      * @return \Magento\Framework\Controller\ResultInterface
      */
     public function execute()
@@ -44,14 +51,14 @@ class Save extends \Magento\Backend\App\Action
                 $this->messageManager->addErrorMessage(__('This account manager no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
             }
-        
+
             $model->setData($data);
-        
+
             try {
                 $model->save();
                 $this->messageManager->addSuccessMessage(__('You saved the account manager.'));
                 $this->dataPersistor->clear('xigen_customeraccountmanager_accountmanager');
-        
+
                 if ($this->getRequest()->getParam('back')) {
                     return $resultRedirect->setPath('*/*/edit', ['accountmanager_id' => $model->getId()]);
                 }
@@ -59,9 +66,10 @@ class Save extends \Magento\Backend\App\Action
             } catch (LocalizedException $e) {
                 $this->messageManager->addErrorMessage($e->getMessage());
             } catch (\Exception $e) {
-                $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the account manager.'));
+                $this->messageManager->addExceptionMessage($e,
+                    __('Something went wrong while saving the account manager.'));
             }
-        
+
             $this->dataPersistor->set('xigen_customeraccountmanager_accountmanager', $data);
             return $resultRedirect->setPath('*/*/edit', ['accountmanager_id' => $id]);
         }

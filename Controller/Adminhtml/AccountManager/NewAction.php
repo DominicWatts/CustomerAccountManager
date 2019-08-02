@@ -8,6 +8,9 @@ namespace Xigen\CustomerAccountManager\Controller\Adminhtml\AccountManager;
  */
 class NewAction extends \Xigen\CustomerAccountManager\Controller\Adminhtml\AccountManager
 {
+    /**
+     * @var \Magento\Backend\Model\View\Result\ForwardFactory
+     */
     protected $resultForwardFactory;
 
     /**
@@ -26,7 +29,6 @@ class NewAction extends \Xigen\CustomerAccountManager\Controller\Adminhtml\Accou
 
     /**
      * New action
-     *
      * @return \Magento\Framework\Controller\ResultInterface
      */
     public function execute()
