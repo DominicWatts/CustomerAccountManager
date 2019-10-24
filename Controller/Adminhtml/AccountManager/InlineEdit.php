@@ -53,7 +53,7 @@ class InlineEdit extends \Magento\Backend\App\Action
                     /** @var \Xigen\CustomerAccountManager\Model\AccountManager $model */
                     $model = $this->accountManagerFactory->create()->load($modelId);
                     try {
-                        $model->setData(array_merge($model->getData(), $postItems[$modelId]));
+                        $model->setData($postItems[$modelId] + $model->getData());
                         $model->save();
                     } catch (\Exception $e) {
                         $messages[] = "[Account manager ID: {$modelId}]  {$e->getMessage()}";

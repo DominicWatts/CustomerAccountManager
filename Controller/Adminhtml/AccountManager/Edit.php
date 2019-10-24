@@ -66,8 +66,10 @@ class Edit extends \Xigen\CustomerAccountManager\Controller\Adminhtml\AccountMan
             $id ? __('Edit account manager') : __('New account manager')
         );
         $resultPage->getConfig()->getTitle()->prepend(__('account managers'));
-        $resultPage->getConfig()->getTitle()->prepend($model->getId() ? __('Edit Account Manager %1',
-            $model->getId()) : __('New Account Manager'));
+        $resultPage->getConfig()->getTitle()->prepend($model->getId() ? __(
+            'Edit Account Manager %1',
+            $model->getId()
+        ) : __('New Account Manager'));
         return $resultPage;
     }
 }
