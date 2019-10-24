@@ -1,5 +1,6 @@
 <?php
 
+// phpcs:disable Magento2.Files.LineLength.MaxExceeded
 
 namespace Xigen\CustomerAccountManager\Model;
 
